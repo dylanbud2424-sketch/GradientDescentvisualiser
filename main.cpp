@@ -43,12 +43,7 @@ float calculateNewBias(float oldbias, float yhat, float y){
     return oldbias-(ALPHA*(yhat-y));
 }
 
-void UpdateNetwork(Neuron &neuron, float y){
-    //target output that we want the neural network to output
-    //y = 0
-    //weight = -1.2
-    //xinupt = 1.5
-    //bias = 0.414
+void UpdateNeuron(Neuron &neuron, float y){
     float yhat = calculateSigmoid(calculatez(neuron.weight,neuron.bias,neuron.input));
     neuron.weight = calculateNewWeight(neuron.weight, yhat, y, neuron.input);
     neuron.bias = calculateNewBias(neuron.bias,yhat,y);    
@@ -66,9 +61,9 @@ void printNeuron(Neuron &neuron, float y){
 
 int main(){
     Neuron myNeuron = {-1.2,1.5,0.414};
-    UpdateNetwork(myNeuron, 0);
+    UpdateNeuron(myNeuron, 0);
     printNeuron(myNeuron, 0);
-    UpdateNetwork(myNeuron, 0);
+    UpdateNeuron(myNeuron, 0);
     printNeuron(myNeuron, 0);
 
 
