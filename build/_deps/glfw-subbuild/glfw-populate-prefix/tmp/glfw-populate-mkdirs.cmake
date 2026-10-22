@@ -6,22 +6,22 @@ cmake_minimum_required(VERSION ${CMAKE_VERSION}) # this file comes with cmake
 # If CMAKE_DISABLE_SOURCE_CHANGES is set to true and the source directory is an
 # existing directory in our source tree, calling file(MAKE_DIRECTORY) on it
 # would cause a fatal error, even though it would be a no-op.
-if(NOT EXISTS "/home/lunet/wsdb4/Programming projects/GradientDescentvisualiser/build/_deps/glfw-src")
-  file(MAKE_DIRECTORY "/home/lunet/wsdb4/Programming projects/GradientDescentvisualiser/build/_deps/glfw-src")
+if(NOT EXISTS "/home/dylan/C++ projects/GradientDescentvisualiser/build/_deps/glfw-src")
+  file(MAKE_DIRECTORY "/home/dylan/C++ projects/GradientDescentvisualiser/build/_deps/glfw-src")
 endif()
 file(MAKE_DIRECTORY
-  "/home/lunet/wsdb4/Programming projects/GradientDescentvisualiser/build/_deps/glfw-build"
-  "/home/lunet/wsdb4/Programming projects/GradientDescentvisualiser/build/_deps/glfw-subbuild/glfw-populate-prefix"
-  "/home/lunet/wsdb4/Programming projects/GradientDescentvisualiser/build/_deps/glfw-subbuild/glfw-populate-prefix/tmp"
-  "/home/lunet/wsdb4/Programming projects/GradientDescentvisualiser/build/_deps/glfw-subbuild/glfw-populate-prefix/src/glfw-populate-stamp"
-  "/home/lunet/wsdb4/Programming projects/GradientDescentvisualiser/build/_deps/glfw-subbuild/glfw-populate-prefix/src"
-  "/home/lunet/wsdb4/Programming projects/GradientDescentvisualiser/build/_deps/glfw-subbuild/glfw-populate-prefix/src/glfw-populate-stamp"
+  "/home/dylan/C++ projects/GradientDescentvisualiser/build/_deps/glfw-build"
+  "/home/dylan/C++ projects/GradientDescentvisualiser/build/_deps/glfw-subbuild/glfw-populate-prefix"
+  "/home/dylan/C++ projects/GradientDescentvisualiser/build/_deps/glfw-subbuild/glfw-populate-prefix/tmp"
+  "/home/dylan/C++ projects/GradientDescentvisualiser/build/_deps/glfw-subbuild/glfw-populate-prefix/src/glfw-populate-stamp"
+  "/home/dylan/C++ projects/GradientDescentvisualiser/build/_deps/glfw-subbuild/glfw-populate-prefix/src"
+  "/home/dylan/C++ projects/GradientDescentvisualiser/build/_deps/glfw-subbuild/glfw-populate-prefix/src/glfw-populate-stamp"
 )
 
 set(configSubDirs )
 foreach(subDir IN LISTS configSubDirs)
-    file(MAKE_DIRECTORY "/home/lunet/wsdb4/Programming projects/GradientDescentvisualiser/build/_deps/glfw-subbuild/glfw-populate-prefix/src/glfw-populate-stamp/${subDir}")
+    file(MAKE_DIRECTORY "/home/dylan/C++ projects/GradientDescentvisualiser/build/_deps/glfw-subbuild/glfw-populate-prefix/src/glfw-populate-stamp/${subDir}")
 endforeach()
 if(cfgdir)
-  file(MAKE_DIRECTORY "/home/lunet/wsdb4/Programming projects/GradientDescentvisualiser/build/_deps/glfw-subbuild/glfw-populate-prefix/src/glfw-populate-stamp${cfgdir}") # cfgdir has leading slash
+  file(MAKE_DIRECTORY "/home/dylan/C++ projects/GradientDescentvisualiser/build/_deps/glfw-subbuild/glfw-populate-prefix/src/glfw-populate-stamp${cfgdir}") # cfgdir has leading slash
 endif()

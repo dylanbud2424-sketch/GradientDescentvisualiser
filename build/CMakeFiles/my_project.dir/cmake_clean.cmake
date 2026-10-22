@@ -1,4 +1,5 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/my_project.dir/link.d"
   "CMakeFiles/my_project.dir/src/main.cpp.o"
   "CMakeFiles/my_project.dir/src/main.cpp.o.d"
   "CMakeFiles/my_project.dir/thirdparty/imgui/backends/imgui_impl_glfw.cpp.o"

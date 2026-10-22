@@ -1,9 +1,9 @@
 {
 	"InstallScripts" : 
 	[
-		"/home/lunet/wsdb4/Programming projects/GradientDescentvisualiser/build/cmake_install.cmake",
-		"/home/lunet/wsdb4/Programming projects/GradientDescentvisualiser/build/_deps/glfw-build/cmake_install.cmake",
-		"/home/lunet/wsdb4/Programming projects/GradientDescentvisualiser/build/_deps/glfw-build/src/cmake_install.cmake"
+		"/home/dylan/C++ projects/GradientDescentvisualiser/build/cmake_install.cmake",
+		"/home/dylan/C++ projects/GradientDescentvisualiser/build/_deps/glfw-build/cmake_install.cmake",
+		"/home/dylan/C++ projects/GradientDescentvisualiser/build/_deps/glfw-build/src/cmake_install.cmake"
 	],
 	"Parallel" : false
 }

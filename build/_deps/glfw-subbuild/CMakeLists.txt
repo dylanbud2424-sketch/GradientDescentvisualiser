@@ -1,7 +1,7 @@
 # Distributed under the OSI-approved BSD 3-Clause License.  See accompanying
 # file LICENSE.rst or https://cmake.org/licensing for details.
 
-cmake_minimum_required(VERSION 4.4.4)
+cmake_minimum_required(VERSION 4.3.0)
 
 # Reject any attempt to use a toolchain file. We must not use one because
 # we could be downloading it here. If the CMAKE_TOOLCHAIN_FILE environment
@@ -19,17 +19,17 @@ project(glfw-populate NONE)
 # Pass through things we've already detected in the main project to avoid
 # paying the cost of redetecting them again in ExternalProject_Add()
 set(GIT_EXECUTABLE [==[/usr/bin/git]==])
-set(Git_VERSION [==[2.34.1]==])
+set(Git_VERSION [==[2.56.0]==])
 set_property(GLOBAL PROPERTY _CMAKE_FindGit_GIT_EXECUTABLE_VERSION
-  [==[/usr/bin/git;2.34.1]==]
+  [==[/usr/bin/git;2.56.0]==]
 )
 
 
 include(ExternalProject)
 ExternalProject_Add(glfw-populate
                      "UPDATE_DISCONNECTED" "False" "GIT_REPOSITORY" "https://github.com/glfw/glfw.git" "EXTERNALPROJECT_INTERNAL_ARGUMENT_SEPARATOR" "GIT_TAG" "3.4" "GIT_SHALLOW" "ON"
-                    SOURCE_DIR          "/home/lunet/wsdb4/Programming projects/GradientDescentvisualiser/build/_deps/glfw-src"
-                    BINARY_DIR          "/home/lunet/wsdb4/Programming projects/GradientDescentvisualiser/build/_deps/glfw-build"
+                    SOURCE_DIR          "/home/dylan/C++ projects/GradientDescentvisualiser/build/_deps/glfw-src"
+                    BINARY_DIR          "/home/dylan/C++ projects/GradientDescentvisualiser/build/_deps/glfw-build"
                     CONFIGURE_COMMAND   ""
                     BUILD_COMMAND       ""
                     INSTALL_COMMAND     ""
