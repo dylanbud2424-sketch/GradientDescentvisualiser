@@ -1,6 +1,8 @@
 #include <iostream>
 #include <vector>
 #include <cmath>
+#include <map>
+#include <string>
 #include "imgui.h"
 #include "imgui_impl_glfw.h"
 #include "imgui_impl_opengl3.h"
@@ -22,6 +24,8 @@ struct Neuron {
     float weight;
     float input;
     float bias;
+    float learningRate;
+    float yhat;
 };
 
 //The sigmoid function creates the probability of the output being one
@@ -57,10 +61,10 @@ float calculateNewBias(float oldbias, float yhat, float y, float ALPHA){
     return oldbias-(ALPHA*(yhat-y));
 }
 
-void UpdateNeuron(Neuron &neuron, float y, float ALPHA){
-    float yhat = calculateSigmoid(calculatez(neuron.weight,neuron.bias,neuron.input));
-    neuron.weight = calculateNewWeight(neuron.weight, yhat, y, neuron.input, ALPHA);
-    neuron.bias = calculateNewBias(neuron.bias,yhat,y, ALPHA);    
+void UpdateNeuron(Neuron &neuron, float y){
+    neuron.yhat = calculateSigmoid(calculatez(neuron.weight,neuron.bias,neuron.input));
+    neuron.weight = calculateNewWeight(neuron.weight, neuron.yhat, y, neuron.input, neuron.learningRate);
+    neuron.bias = calculateNewBias(neuron.bias,neuron.yhat,y, neuron.learningRate);    
 }
 
 void printNeuron(Neuron &neuron, float y){
@@ -73,6 +77,19 @@ void printNeuron(Neuron &neuron, float y){
     std::cout << "\n\n";
 }
 
+void DrawVerticalSlider(const std::string& label, float& value, float minVal, float maxVal){
+
+    ImGui::BeginGroup();
+
+    std::string sliderLabel = std::string("##") + label;
+
+
+    ImGui::VSliderFloat(sliderLabel.c_str(), ImVec2(32.0f, 80.f), &value, minVal, maxVal, "");
+    ImGui::SameLine(0.0f, -1.0f);
+    ImGui::SetCursorPosY(ImGui::GetCursorPosY() + (80.0f - ImGui::GetTextLineHeight())*0.5f);
+    ImGui::Text("%s:  %.2f", label.c_str(), value);
+    ImGui::EndGroup();
+}
 
 int main() {
     glfwSetErrorCallback(glfw_error_callback);
@@ -108,9 +125,11 @@ int main() {
     ImGui_ImplOpenGL3_Init(glsl_version);
 
     // State
-    float ALPHA = 0.01f;
-    int iterations = 100;
 
+    Neuron myNeuron = {20.0, 0.4f, 3.0f, 0.01f, 0};
+    myNeuron.yhat = calculateSigmoid(calculatez(myNeuron.weight,myNeuron.bias,myNeuron.input));
+    
+    float y = 0.01f;
 
     // Main loop
     while (!glfwWindowShouldClose(window)) {
@@ -123,13 +142,23 @@ int main() {
 
         //Actual Code goes here
         ImGui::Begin("Gradient Descent");
-        ImGui::Text("Parameters");
-        ImGui::SliderFloat("Learning rate", &ALPHA, 0.001f, 1.0f, "%.4f");
-        ImGui::SliderInt("Iterations", &iterations, 1, 1000);
+
+        DrawVerticalSlider("Weight", myNeuron.weight, -50.0, 50.0f);
+        ImGui::SameLine(0.0f, -1.0f);
+        DrawVerticalSlider("Input", myNeuron.input, 0.0f, 1.0f);
+        ImGui::SameLine(0.0f, -1.0f);
+        DrawVerticalSlider("Bias", myNeuron.bias, -10.0f, 10.0f);
+        ImGui::SameLine(0.0f, -1.0f);
+        DrawVerticalSlider("LearningRate", myNeuron.learningRate, 0.01f, 1.0f);
+        ImGui::SameLine(0.0f, -1.0f);
+        ImGui::SetCursorPosY(ImGui::GetCursorPosY() + (80.0f - ImGui::GetTextLineHeight())*0.5f);
+        ImGui::Text("Output is: %.2f", myNeuron.yhat);
+
+        if (ImGui::Button("Update Neuron")){
+            UpdateNeuron(myNeuron, y);
+        }
 
         ImGui::End();
-
-
 
         // Rendering
         ImGui::Render();
