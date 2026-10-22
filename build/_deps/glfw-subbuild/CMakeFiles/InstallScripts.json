@@ -1,7 +1,0 @@
-{
-	"InstallScripts" : 
-	[
-		"/home/dylan/C++ projects/GradientDescentvisualiser/build/_deps/glfw-subbuild/cmake_install.cmake"
-	],
-	"Parallel" : false
-}
