@@ -1,0 +1,7 @@
+{
+	"InstallScripts" : 
+	[
+		"/home/lunet/wsdb4/Programming projects/GradientDescentvisualiser/build/_deps/glfw-subbuild/cmake_install.cmake"
+	],
+	"Parallel" : false
+}

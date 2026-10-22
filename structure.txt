@@ -1,0 +1,24 @@
+my_project/
+├── CMakeLists.txt              # Or your build file of choice
+├── src/                        # Your core application code
+│   ├── main.cpp
+│   ├── app.cpp
+│   └── app.h
+└── thirdparty/                 # External source-only dependencies
+    └── imgui/
+        ├── imconfig.h          # Core ImGui config header
+        ├── imgui.h             # Core ImGui public API
+        ├── imgui_internal.h    # Core ImGui internals
+        ├── imgui.cpp           # Core implementation
+        ├── imgui_demo.cpp      # Optional: Example windows
+        ├── imgui_draw.cpp      # Core drawing pipeline
+        ├── imgui_tables.cpp    # Core table formatting
+        ├── imgui_widgets.cpp   # Core UI elements (buttons, sliders, etc.)
+        ├── imstb_rectpack.h    # Font packing dependency
+        ├── imstb_textedit.h    # Text cursor/input dependency
+        ├── imstb_truetype.h    # Font loading dependency
+        └── backends/           # Grab ONLY the pair that matches your stack
+            ├── imgui_impl_glfw.h
+            ├── imgui_impl_glfw.cpp
+            ├── imgui_impl_opengl3.h
+            └── imgui_impl_opengl3.cpp
